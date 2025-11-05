@@ -13,7 +13,10 @@ import javax.swing.JOptionPane;
  */
 public class Termo extends javax.swing.JFrame {
 
-    String[] palavras = {"cinco", "outra"};
+    String[] palavras = {
+        "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "dança", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "famos", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nível", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "depois", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "furor", "fusão", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "fraude", "claro"
+    };
+
     String palavraSorteada = "";
 
     /**
