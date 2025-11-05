@@ -13,11 +13,22 @@ import javax.swing.JOptionPane;
  */
 public class Termo extends javax.swing.JFrame {
 
+    String[] palavras = {"cinco", "outra"};
+    String palavraSorteada = "";
+
     /**
      * Creates new form Termo
      */
     public Termo() {
         initComponents();
+        sortearPalavra();
+    }
+
+    private void sortearPalavra() {
+        Random r = new Random();
+        int indicePalavra = r.nextInt(palavras.length);
+        System.out.println(palavras[indicePalavra]);
+        palavraSorteada = palavras[indicePalavra];
     }
 
     /**
@@ -766,8 +777,6 @@ public class Termo extends javax.swing.JFrame {
     private void jbtentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtentarActionPerformed
         // TODO add your handling code here:
 
-        Random r = new Random();
-        String s = r.toString();
         int quantidadeErros = 0;
         String palavraSecreta = "Cinco";
         int tentaivas = 0;
