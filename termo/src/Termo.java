@@ -1,6 +1,15 @@
 
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Random;
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -16,15 +25,146 @@ public class Termo extends javax.swing.JFrame {
     String[] palavras = {
         "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "dança", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "famos", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nível", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "depois", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "furor", "fusão", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "fraude", "claro"
     };
+    ImageIcon imagem = new ImageIcon(getClass().getResource("imagens/fundo.png"));
 
     String palavraSorteada = "";
+
+    JLabel ml[][] = new JLabel[6][5];
 
     /**
      * Creates new form Termo
      */
     public Termo() {
         initComponents();
+        geraLabels(6, 5);
+        criarFundo();
+        
+        configurarTeclasTeclado(this);
         sortearPalavra();
+    }
+    private void criarFundo() {
+        JLabel label = new JLabel();
+        label.setBounds(0, 0, 728, 566);
+        label.setIcon(imagem);
+        this.add(label);
+    }
+
+    private void configurarTeclasTeclado(JFrame frame) {
+        frame.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_A:
+                        preencherCampo("A");
+                        break;
+                    case KeyEvent.VK_B:
+                        preencherCampo("B");
+                        break;
+                    case KeyEvent.VK_C:
+                        preencherCampo("C");
+                        break;
+                    case KeyEvent.VK_D:
+                        preencherCampo("D");
+                        break;
+                    case KeyEvent.VK_E:
+                        preencherCampo("E");
+                        break;
+                    case KeyEvent.VK_F:
+                        preencherCampo("F");
+                        break;
+                    case KeyEvent.VK_G:
+                        preencherCampo("G");
+                        break;
+                    case KeyEvent.VK_H:
+                        preencherCampo("H");
+                        break;
+                    case KeyEvent.VK_I:
+                        preencherCampo("I");
+                        break;
+                    case KeyEvent.VK_J:
+                        preencherCampo("J");
+                        break;
+                    case KeyEvent.VK_K:
+                        preencherCampo("K");
+                        break;
+                    case KeyEvent.VK_L:
+                        preencherCampo("L");
+                        break;
+                    case KeyEvent.VK_M:
+                        preencherCampo("M");
+                        break;
+                    case KeyEvent.VK_N:
+                        preencherCampo("N");
+                        break;
+                    case KeyEvent.VK_O:
+                        preencherCampo("O");
+                        break;
+                    case KeyEvent.VK_P:
+                        preencherCampo("P");
+                        break;
+                    case KeyEvent.VK_Q:
+                        preencherCampo("Q");
+                        break;
+                    case KeyEvent.VK_R:
+                        preencherCampo("R");
+                        break;
+                    case KeyEvent.VK_S:
+                        preencherCampo("S");
+                        break;
+                    case KeyEvent.VK_T:
+                        preencherCampo("T");
+                        break;
+                    case KeyEvent.VK_U:
+                        preencherCampo("U");
+                        break;
+                    case KeyEvent.VK_V:
+                        preencherCampo("V");
+                        break;
+                    case KeyEvent.VK_W:
+                        preencherCampo("W");
+                        break;
+                    case KeyEvent.VK_X:
+                        preencherCampo("X");
+                        break;
+                    case KeyEvent.VK_Y:
+                        preencherCampo("Y");
+                        break;
+                    case KeyEvent.VK_Z:
+                        preencherCampo("Z");
+                        break;
+                    case KeyEvent.VK_BACK_SPACE:
+                        preencherCampo("");
+                        break;
+                }
+            }
+        });
+
+        frame.setFocusable(true);
+        frame.requestFocusInWindow();
+    }
+    private void preencherCampo(String letra){
+        ml[0][0].setText(letra);
+        
+    }
+
+
+    private void geraLabels(int a, int b) {
+        for (int linha = 0; linha < a; linha++) {
+            for (int coluna = 0; coluna < b; coluna++) {
+                ml[linha][coluna] = new JLabel();
+                ml[linha][coluna].setBounds(coluna * 55 + 213, linha * 62 + 38, 50, 50);
+                ml[linha][coluna].setFont(new Font("Arial", Font.BOLD, 18));
+                ml[linha][coluna].setHorizontalAlignment(SwingConstants.CENTER);
+                ml[linha][coluna].setOpaque(true);          // necessário para mostrar o fundo
+                ml[linha][coluna].setBackground(new Color(121, 87, 53)); // cor de fundo
+                ml[linha][coluna].setForeground(Color.WHITE);// cor do texto
+                ml[linha][coluna].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+                if (linha > 0){
+                ml[linha][coluna].setBackground(new Color(179, 139, 109));
+                }
+                add(ml[linha][coluna]);
+            }
+        }
     }
 
     private void sortearPalavra() {
@@ -43,39 +183,9 @@ public class Termo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtfa1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jbtentar = new javax.swing.JButton();
         jbq = new javax.swing.JButton();
-        jtfa2 = new javax.swing.JTextField();
-        jtfa3 = new javax.swing.JTextField();
-        jtfa4 = new javax.swing.JTextField();
-        jtfa0 = new javax.swing.JTextField();
-        jtfb2 = new javax.swing.JTextField();
-        jtfb3 = new javax.swing.JTextField();
-        jtfb4 = new javax.swing.JTextField();
-        jtfb5 = new javax.swing.JTextField();
-        jtfb1 = new javax.swing.JTextField();
-        jtfc2 = new javax.swing.JTextField();
-        jtfc3 = new javax.swing.JTextField();
-        jtfc4 = new javax.swing.JTextField();
-        jtfc5 = new javax.swing.JTextField();
-        jtfc1 = new javax.swing.JTextField();
-        txttentativa15 = new javax.swing.JTextField();
-        txttentativa16 = new javax.swing.JTextField();
-        txttentativa17 = new javax.swing.JTextField();
-        txttentativa18 = new javax.swing.JTextField();
-        txttentativa19 = new javax.swing.JTextField();
-        txttentativa20 = new javax.swing.JTextField();
-        txttentativa21 = new javax.swing.JTextField();
-        txttentativa22 = new javax.swing.JTextField();
-        txttentativa23 = new javax.swing.JTextField();
-        txttentativa24 = new javax.swing.JTextField();
-        txttentativa25 = new javax.swing.JTextField();
-        txttentativa26 = new javax.swing.JTextField();
-        txttentativa27 = new javax.swing.JTextField();
-        txttentativa28 = new javax.swing.JTextField();
-        txttentativa29 = new javax.swing.JTextField();
         jbw = new javax.swing.JButton();
         jbe = new javax.swing.JButton();
         jbt = new javax.swing.JButton();
@@ -104,15 +214,10 @@ public class Termo extends javax.swing.JFrame {
         jButton26 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(728, 566));
 
-        jtfa1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfa1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfa1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("TERMULANDO");
 
@@ -129,209 +234,6 @@ public class Termo extends javax.swing.JFrame {
         jbq.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbqActionPerformed(evt);
-            }
-        });
-
-        jtfa2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfa2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfa2ActionPerformed(evt);
-            }
-        });
-
-        jtfa3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfa3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfa3ActionPerformed(evt);
-            }
-        });
-
-        jtfa4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfa4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfa4ActionPerformed(evt);
-            }
-        });
-
-        jtfa0.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfa0.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfa0ActionPerformed(evt);
-            }
-        });
-
-        jtfb2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfb2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfb2ActionPerformed(evt);
-            }
-        });
-
-        jtfb3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfb3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfb3ActionPerformed(evt);
-            }
-        });
-
-        jtfb4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfb4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfb4ActionPerformed(evt);
-            }
-        });
-
-        jtfb5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfb5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfb5ActionPerformed(evt);
-            }
-        });
-
-        jtfb1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfb1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfb1ActionPerformed(evt);
-            }
-        });
-
-        jtfc2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfc2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfc2ActionPerformed(evt);
-            }
-        });
-
-        jtfc3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfc3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfc3ActionPerformed(evt);
-            }
-        });
-
-        jtfc4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfc4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfc4ActionPerformed(evt);
-            }
-        });
-
-        jtfc5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfc5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfc5ActionPerformed(evt);
-            }
-        });
-
-        jtfc1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jtfc1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jtfc1ActionPerformed(evt);
-            }
-        });
-
-        txttentativa15.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa15.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa15ActionPerformed(evt);
-            }
-        });
-
-        txttentativa16.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa16.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa16ActionPerformed(evt);
-            }
-        });
-
-        txttentativa17.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa17.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa17ActionPerformed(evt);
-            }
-        });
-
-        txttentativa18.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa18.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa18ActionPerformed(evt);
-            }
-        });
-
-        txttentativa19.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa19.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa19ActionPerformed(evt);
-            }
-        });
-
-        txttentativa20.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa20.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa20ActionPerformed(evt);
-            }
-        });
-
-        txttentativa21.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa21.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa21ActionPerformed(evt);
-            }
-        });
-
-        txttentativa22.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa22.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa22ActionPerformed(evt);
-            }
-        });
-
-        txttentativa23.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa23.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa23ActionPerformed(evt);
-            }
-        });
-
-        txttentativa24.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa24.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa24ActionPerformed(evt);
-            }
-        });
-
-        txttentativa25.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa25.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa25ActionPerformed(evt);
-            }
-        });
-
-        txttentativa26.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa26.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa26ActionPerformed(evt);
-            }
-        });
-
-        txttentativa27.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa27.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa27ActionPerformed(evt);
-            }
-        });
-
-        txttentativa28.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa28.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa28ActionPerformed(evt);
-            }
-        });
-
-        txttentativa29.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txttentativa29.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txttentativa29ActionPerformed(evt);
             }
         });
 
@@ -547,79 +449,9 @@ public class Termo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(254, 254, 254)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(txttentativa24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txttentativa20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txttentativa21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txttentativa22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txttentativa23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfb1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfb2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfb3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfb4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfb5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfa0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfa1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfa2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfa3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfa4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jtfc1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfc2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfc3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfc4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jtfc5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(txttentativa19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txttentativa15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txttentativa16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txttentativa17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txttentativa18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txttentativa29, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txttentativa25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txttentativa26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txttentativa27, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txttentativa28, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(239, Short.MAX_VALUE))
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(137, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
@@ -681,58 +513,15 @@ public class Termo extends javax.swing.JFrame {
                         .addComponent(jbo)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jbp)))
-                .addGap(92, 92, 92))
+                .addGap(107, 107, 107))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfa1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfa2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfa3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfa4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfa0, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfb2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfb3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfb4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfb5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfb1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfc2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfc3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfc4, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfc5, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jtfc1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttentativa15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa16, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa18, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa19, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttentativa20, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa21, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txttentativa25, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa26, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa27, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa28, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txttentativa29, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jbq, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbw, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbe, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbr, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -741,7 +530,8 @@ public class Termo extends javax.swing.JFrame {
                     .addComponent(jbu, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbi, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbp, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbq, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -767,15 +557,11 @@ public class Termo extends javax.swing.JFrame {
                     .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtentar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(52, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jtfa1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfa1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfa1ActionPerformed
 
     private void jbtentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtentarActionPerformed
         // TODO add your handling code here:
@@ -796,122 +582,6 @@ public class Termo extends javax.swing.JFrame {
     private void jbqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbqActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbqActionPerformed
-
-    private void jtfa2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfa2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfa2ActionPerformed
-
-    private void jtfa3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfa3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfa3ActionPerformed
-
-    private void jtfa4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfa4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfa4ActionPerformed
-
-    private void jtfa0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfa0ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfa0ActionPerformed
-
-    private void jtfb2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfb2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfb2ActionPerformed
-
-    private void jtfb3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfb3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfb3ActionPerformed
-
-    private void jtfb4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfb4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfb4ActionPerformed
-
-    private void jtfb5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfb5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfb5ActionPerformed
-
-    private void jtfb1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfb1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfb1ActionPerformed
-
-    private void jtfc2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfc2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfc2ActionPerformed
-
-    private void jtfc3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfc3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfc3ActionPerformed
-
-    private void jtfc4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfc4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfc4ActionPerformed
-
-    private void jtfc5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfc5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfc5ActionPerformed
-
-    private void jtfc1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfc1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jtfc1ActionPerformed
-
-    private void txttentativa15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa15ActionPerformed
-
-    private void txttentativa16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa16ActionPerformed
-
-    private void txttentativa17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa17ActionPerformed
-
-    private void txttentativa18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa18ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa18ActionPerformed
-
-    private void txttentativa19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa19ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa19ActionPerformed
-
-    private void txttentativa20ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa20ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa20ActionPerformed
-
-    private void txttentativa21ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa21ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa21ActionPerformed
-
-    private void txttentativa22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa22ActionPerformed
-
-    private void txttentativa23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa23ActionPerformed
-
-    private void txttentativa24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa24ActionPerformed
-
-    private void txttentativa25ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa25ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa25ActionPerformed
-
-    private void txttentativa26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa26ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa26ActionPerformed
-
-    private void txttentativa27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa27ActionPerformed
-
-    private void txttentativa28ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa28ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa28ActionPerformed
-
-    private void txttentativa29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txttentativa29ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txttentativa29ActionPerformed
 
     private void jbwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbwActionPerformed
         // TODO add your handling code here:
@@ -1082,35 +752,5 @@ public class Termo extends javax.swing.JFrame {
     private javax.swing.JButton jbu;
     private javax.swing.JButton jbw;
     private javax.swing.JButton jby;
-    private javax.swing.JTextField jtfa0;
-    private javax.swing.JTextField jtfa1;
-    private javax.swing.JTextField jtfa2;
-    private javax.swing.JTextField jtfa3;
-    private javax.swing.JTextField jtfa4;
-    private javax.swing.JTextField jtfb1;
-    private javax.swing.JTextField jtfb2;
-    private javax.swing.JTextField jtfb3;
-    private javax.swing.JTextField jtfb4;
-    private javax.swing.JTextField jtfb5;
-    private javax.swing.JTextField jtfc1;
-    private javax.swing.JTextField jtfc2;
-    private javax.swing.JTextField jtfc3;
-    private javax.swing.JTextField jtfc4;
-    private javax.swing.JTextField jtfc5;
-    private javax.swing.JTextField txttentativa15;
-    private javax.swing.JTextField txttentativa16;
-    private javax.swing.JTextField txttentativa17;
-    private javax.swing.JTextField txttentativa18;
-    private javax.swing.JTextField txttentativa19;
-    private javax.swing.JTextField txttentativa20;
-    private javax.swing.JTextField txttentativa21;
-    private javax.swing.JTextField txttentativa22;
-    private javax.swing.JTextField txttentativa23;
-    private javax.swing.JTextField txttentativa24;
-    private javax.swing.JTextField txttentativa25;
-    private javax.swing.JTextField txttentativa26;
-    private javax.swing.JTextField txttentativa27;
-    private javax.swing.JTextField txttentativa28;
-    private javax.swing.JTextField txttentativa29;
     // End of variables declaration//GEN-END:variables
 }
