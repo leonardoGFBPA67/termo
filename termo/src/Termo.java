@@ -23,13 +23,15 @@ import javax.swing.SwingConstants;
 public class Termo extends javax.swing.JFrame {
 
     String[] palavras = {
-        "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "dança", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "famos", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nível", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "depois", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "furor", "fusão", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "fraude", "claro"
+        "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "dança", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "famos", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nível", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "furor", "fusão", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "claro"
     };
     ImageIcon imagem = new ImageIcon(getClass().getResource("imagens/fundo.png"));
 
     String palavraSorteada = "";
 
     JLabel ml[][] = new JLabel[6][5];
+    int colunaGlobal = 0;
+    int linhaGlobal = 0;
 
     /**
      * Creates new form Termo
@@ -38,10 +40,12 @@ public class Termo extends javax.swing.JFrame {
         initComponents();
         geraLabels(6, 5);
         criarFundo();
-        
+        this.setLocation(320, 50);
         configurarTeclasTeclado(this);
         sortearPalavra();
+
     }
+
     private void criarFundo() {
         JLabel label = new JLabel();
         label.setBounds(0, 0, 728, 566);
@@ -133,7 +137,10 @@ public class Termo extends javax.swing.JFrame {
                         preencherCampo("Z");
                         break;
                     case KeyEvent.VK_BACK_SPACE:
-                        preencherCampo("");
+                        preencherCampo("<");
+                        break;
+                    case KeyEvent.VK_ENTER:
+                        conferirPalavra();
                         break;
                 }
             }
@@ -142,11 +149,104 @@ public class Termo extends javax.swing.JFrame {
         frame.setFocusable(true);
         frame.requestFocusInWindow();
     }
-    private void preencherCampo(String letra){
-        ml[0][0].setText(letra);
-        
+
+    private void preencherCampo(String letra) {
+        if (letra.equals("<")) {
+            if (colunaGlobal > 0) {
+                ml[linhaGlobal][colunaGlobal - 1].setText("");
+                colunaGlobal--;
+            }
+            return;
+        }
+
+        if (colunaGlobal < 5) {
+            ml[linhaGlobal][colunaGlobal].setText(letra);
+            colunaGlobal++;
+        }
+        if (colunaGlobal >= 5) {
+            jbtentar.setEnabled(true);
+        }
     }
 
+    private void conferirPalavra() {
+        String copiaPalavraSorteada = palavraSorteada.toUpperCase();
+        if (colunaGlobal < 5) {
+            return;
+        }
+        String palavra = lerPalavra();
+        if (palavra.equalsIgnoreCase(copiaPalavraSorteada)) {
+            //mensagem fim de jogo
+            for (int i = 0; i < 5; i++) {
+                //deixar botão verde
+                ml[linhaGlobal][i].setForeground(Color.GREEN);// cor do texto
+            }
+            JOptionPane.showMessageDialog(null, "Você ganhou!");
+            int retorno = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", palavra, JOptionPane.YES_NO_OPTION);
+            if (retorno == 0) {
+                resetaLabels(6, 5);
+                System.out.println(linhaGlobal);
+            } else {
+                return;
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if (palavra.substring(i, i + 1).equalsIgnoreCase(palavraSorteada.substring(i, i + 1))) {
+                //deixar botão verde
+                ml[linhaGlobal][i].setForeground(Color.GREEN);// cor do texto
+                atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.GREEN);
+                copiaPalavraSorteada = conferirLetra(copiaPalavraSorteada, palavra, i);
+
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if (copiaPalavraSorteada.toUpperCase().contains(palavra.substring(i, i + 1))) {
+                ml[linhaGlobal][i].setForeground(Color.YELLOW);
+                atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.YELLOW);
+                copiaPalavraSorteada = conferirLetra(copiaPalavraSorteada, palavra, i);
+            } else {
+                atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.RED);
+            }
+        }
+
+        if (linhaGlobal < 5) {
+            linhaGlobal++;
+            colunaGlobal = 0;
+            habilitarProxLinha();
+            this.setFocusable(true);
+            this.requestFocusInWindow();
+        } else {
+            JOptionPane.showMessageDialog(null, "*voz do faustão* ERROOU" + "\n A palavra era: " + palavraSorteada);
+
+            int retorno = JOptionPane.showConfirmDialog(null, "Deseja jogar novamente?", palavra, JOptionPane.YES_NO_OPTION);
+            if (retorno == 0) {
+                resetaLabels(6, 5);
+            } else {
+                return;
+            }
+        }
+    }
+
+    private String conferirLetra(String copiaPalavraSorteada, String palavra, int i) {
+        int indice = copiaPalavraSorteada.indexOf(palavra.substring(i, i + 1));
+        System.out.println(palavraSorteada);
+        System.out.println(indice);
+        if (indice == - 1) {
+            return copiaPalavraSorteada;
+        }
+
+        copiaPalavraSorteada.replace(palavra.substring(i, i + 1), "*");
+
+        return copiaPalavraSorteada;
+    }
+
+    private String lerPalavra() {
+        String palavra = "";
+        for (int i = 0; i < 5; i++) {
+            palavra += ml[linhaGlobal][i].getText();
+
+        }
+        return palavra;
+    }
 
     private void geraLabels(int a, int b) {
         for (int linha = 0; linha < a; linha++) {
@@ -159,11 +259,41 @@ public class Termo extends javax.swing.JFrame {
                 ml[linha][coluna].setBackground(new Color(121, 87, 53)); // cor de fundo
                 ml[linha][coluna].setForeground(Color.WHITE);// cor do texto
                 ml[linha][coluna].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
-                if (linha > 0){
-                ml[linha][coluna].setBackground(new Color(179, 139, 109));
+                if (linha > 0) {
+                    ml[linha][coluna].setBackground(new Color(179, 139, 109));
                 }
                 add(ml[linha][coluna]);
             }
+        }
+    }
+
+    private void resetaLabels(int a, int b) {
+        for (int linha = 0; linha < a; linha++) {
+            for (int coluna = 0; coluna < b; coluna++) {
+                ml[linha][coluna].setOpaque(true);          // necessário para mostrar o fundo
+                ml[linha][coluna].setBackground(new Color(121, 87, 53)); // cor de fundo
+                ml[linha][coluna].setForeground(Color.WHITE);// cor do texto
+                ml[linha][coluna].setBorder(BorderFactory.createLineBorder(Color.BLACK, 1));
+                if (linha > 0) {
+                    ml[linha][coluna].setBackground(new Color(179, 139, 109));
+                }
+                ml[linha][coluna].setText("");
+            }
+
+        }
+        linhaGlobal = 0;
+        colunaGlobal = 0;
+        sortearPalavra();
+        String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        for (int i = 0; i < alfabeto.length(); i++) {
+            atribuirCorBotaoLetra(alfabeto.substring(i, i + 1), Color.LIGHT_GRAY);
+
+        }
+    }
+
+    private void habilitarProxLinha() {
+        for (int i = 0; i < 5; i++) {
+            ml[linhaGlobal][i].setBackground(new Color(121, 87, 53));
         }
     }
 
@@ -172,6 +302,90 @@ public class Termo extends javax.swing.JFrame {
         int indicePalavra = r.nextInt(palavras.length);
         System.out.println(palavras[indicePalavra]);
         palavraSorteada = palavras[indicePalavra];
+    }
+
+    private void atribuirCorBotaoLetra(String L, Color color) {
+        switch (L) {
+            case "A":
+                jba.setBackground(color);
+                break;
+            case "B":
+                jbb.setBackground(color);
+                break;
+            case "C":
+                jbc.setBackground(color);
+                break;
+            case "D":
+                jbd.setBackground(color);
+                break;
+            case "E":
+                jbe.setBackground(color);
+                break;
+            case "F":
+                jbf.setBackground(color);
+                break;
+            case "G":
+                jbg.setBackground(color);
+                break;
+            case "H":
+                jbh.setBackground(color);
+                break;
+            case "I":
+                jbi.setBackground(color);
+                break;
+            case "J":
+                jbj.setBackground(color);
+                break;
+            case "K":
+                jbk.setBackground(color);
+                break;
+            case "L":
+                jbl.setBackground(color);
+                break;
+            case "M":
+                jbm.setBackground(color);
+                break;
+            case "N":
+                jbn.setBackground(color);
+                break;
+            case "O":
+                jbo.setBackground(color);
+                break;
+            case "P":
+                jbp.setBackground(color);
+                break;
+            case "Q":
+                jbq.setBackground(color);
+                break;
+            case "R":
+                jbr.setBackground(color);
+                break;
+            case "S":
+                jbs.setBackground(color);
+                break;
+            case "T":
+                jbt.setBackground(color);
+                break;
+            case "U":
+                jbu.setBackground(color);
+                break;
+            case "V":
+                jbv.setBackground(color);
+                break;
+            case "W":
+                jbw.setBackground(color);
+                break;
+            case "X":
+                jbx.setBackground(color);
+                break;
+            case "Y":
+                jby.setBackground(color);
+                break;
+            case "Z":
+                jbz.setBackground(color);
+                break;
+        }
+
     }
 
     /**
@@ -197,24 +411,23 @@ public class Termo extends javax.swing.JFrame {
         jbs = new javax.swing.JButton();
         jbd = new javax.swing.JButton();
         jba = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
+        jbx = new javax.swing.JButton();
+        jbc = new javax.swing.JButton();
+        jbz = new javax.swing.JButton();
         jbg = new javax.swing.JButton();
         jbh = new javax.swing.JButton();
         jbf = new javax.swing.JButton();
         jbk = new javax.swing.JButton();
         jbl = new javax.swing.JButton();
         jbj = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton27 = new javax.swing.JButton();
+        jbb = new javax.swing.JButton();
+        jbn = new javax.swing.JButton();
+        jbv = new javax.swing.JButton();
+        jbm = new javax.swing.JButton();
         jbp = new javax.swing.JButton();
         jButton26 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(728, 566));
 
         jLabel1.setFont(new java.awt.Font("Rockwell Extra Bold", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,6 +436,7 @@ public class Termo extends javax.swing.JFrame {
 
         jbtentar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jbtentar.setText("TENTAR");
+        jbtentar.setEnabled(false);
         jbtentar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtentarActionPerformed(evt);
@@ -325,27 +539,27 @@ public class Termo extends javax.swing.JFrame {
             }
         });
 
-        jButton13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton13.setText("X");
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        jbx.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbx.setText("X");
+        jbx.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                jbxActionPerformed(evt);
             }
         });
 
-        jButton14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton14.setText("C");
-        jButton14.addActionListener(new java.awt.event.ActionListener() {
+        jbc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbc.setText("C");
+        jbc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton14ActionPerformed(evt);
+                jbcActionPerformed(evt);
             }
         });
 
-        jButton15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton15.setText("Z");
-        jButton15.addActionListener(new java.awt.event.ActionListener() {
+        jbz.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbz.setText("Z");
+        jbz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton15ActionPerformed(evt);
+                jbzActionPerformed(evt);
             }
         });
 
@@ -397,35 +611,35 @@ public class Termo extends javax.swing.JFrame {
             }
         });
 
-        jButton22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton22.setText("B");
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        jbb.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbb.setText("B");
+        jbb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+                jbbActionPerformed(evt);
             }
         });
 
-        jButton23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton23.setText("N");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        jbn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbn.setText("N");
+        jbn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                jbnActionPerformed(evt);
             }
         });
 
-        jButton24.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton24.setText("V");
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        jbv.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbv.setText("V");
+        jbv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                jbvActionPerformed(evt);
             }
         });
 
-        jButton27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton27.setText("M");
-        jButton27.addActionListener(new java.awt.event.ActionListener() {
+        jbm.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jbm.setText("M");
+        jbm.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton27ActionPerformed(evt);
+                jbmActionPerformed(evt);
             }
         });
 
@@ -478,19 +692,19 @@ public class Termo extends javax.swing.JFrame {
                                 .addComponent(jButton26))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
-                                .addComponent(jButton15)
+                                .addComponent(jbz)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton13)
+                                .addComponent(jbx)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton14)
+                                .addComponent(jbc)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton24)
+                                .addComponent(jbv)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton22)
+                                .addComponent(jbb)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton23)
+                                .addComponent(jbn)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton27)
+                                .addComponent(jbm)
                                 .addGap(18, 18, 18)
                                 .addComponent(jbtentar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
@@ -549,13 +763,13 @@ public class Termo extends javax.swing.JFrame {
                         .addComponent(jbd, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton15, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton13, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton14, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton27, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbz, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbx, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbc, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbv, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbb, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbn, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jbm, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jbtentar, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -565,126 +779,127 @@ public class Termo extends javax.swing.JFrame {
 
     private void jbtentarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtentarActionPerformed
         // TODO add your handling code here:
+        conferirPalavra();
 
-        int quantidadeErros = 0;
-        String palavraSecreta = "Cinco";
-        int tentaivas = 0;
-        String tentativa = "";
-
-//        if (txttentativa.getText() != 5) {
-//            JOptionPane.showMessageDialog(null, "A palavra deve conter 5 letras!");
-//        }
-        if (tentativa.equals(palavraSecreta)) {
-            JOptionPane.showMessageDialog(null, "Acertou Parabéns");
-        }
     }//GEN-LAST:event_jbtentarActionPerformed
 
     private void jbqActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbqActionPerformed
         // TODO add your handling code here:
+        preencherCampo("Q");
     }//GEN-LAST:event_jbqActionPerformed
 
     private void jbwActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbwActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("W");
     }//GEN-LAST:event_jbwActionPerformed
 
     private void jbeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbeActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("E");        // TODO add your handling code here:
     }//GEN-LAST:event_jbeActionPerformed
 
     private void jbtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("T");        // TODO add your handling code here:
     }//GEN-LAST:event_jbtActionPerformed
 
     private void jbyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbyActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("Y");        // TODO add your handling code here:
     }//GEN-LAST:event_jbyActionPerformed
 
     private void jbrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbrActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("R");        // TODO add your handling code here:
     }//GEN-LAST:event_jbrActionPerformed
 
     private void jbiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbiActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("I");        // TODO add your handling code here:
     }//GEN-LAST:event_jbiActionPerformed
 
     private void jboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jboActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("O");        // TODO add your handling code here:
     }//GEN-LAST:event_jboActionPerformed
 
     private void jbuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbuActionPerformed
-        // TODO add your handling code here:
+
+        preencherCampo("U");        // TODO add your handling code here:
     }//GEN-LAST:event_jbuActionPerformed
 
     private void jbsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbsActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("S"
+                + "");        // TODO add your handling code here:
     }//GEN-LAST:event_jbsActionPerformed
 
     private void jbdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbdActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("D");        // TODO add your handling code here:
     }//GEN-LAST:event_jbdActionPerformed
 
     private void jbaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbaActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("A");        // TODO add your handling code here:
     }//GEN-LAST:event_jbaActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void jbxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbxActionPerformed
+        preencherCampo("X");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbxActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void jbcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbcActionPerformed
+        preencherCampo("C");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbcActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton15ActionPerformed
+    private void jbzActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbzActionPerformed
+        preencherCampo("Z");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbzActionPerformed
 
     private void jbgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbgActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("G");        // TODO add your handling code here:
     }//GEN-LAST:event_jbgActionPerformed
 
     private void jbhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbhActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("H");        // TODO add your handling code here:
     }//GEN-LAST:event_jbhActionPerformed
 
     private void jbfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbfActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("F");        // TODO add your handling code here:
     }//GEN-LAST:event_jbfActionPerformed
 
     private void jbkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbkActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("K");        // TODO add your handling code here:
     }//GEN-LAST:event_jbkActionPerformed
 
     private void jblActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jblActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("L");        // TODO add your handling code here:
     }//GEN-LAST:event_jblActionPerformed
 
     private void jbjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbjActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("J");        // TODO add your handling code here:
     }//GEN-LAST:event_jbjActionPerformed
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton22ActionPerformed
+    private void jbbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbbActionPerformed
+        preencherCampo("B");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbbActionPerformed
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton23ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton23ActionPerformed
+    private void jbnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbnActionPerformed
+        preencherCampo("N");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbnActionPerformed
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton24ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton24ActionPerformed
+    private void jbvActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbvActionPerformed
+        preencherCampo("V");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbvActionPerformed
 
-    private void jButton27ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton27ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton27ActionPerformed
+    private void jbmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbmActionPerformed
+        preencherCampo("M");        // TODO add your handling code here:
+    }//GEN-LAST:event_jbmActionPerformed
 
     private void jbpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbpActionPerformed
-        // TODO add your handling code here:
+        preencherCampo("P");        // TODO add your handling code here:
     }//GEN-LAST:event_jbpActionPerformed
 
     private void jButton26ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton26ActionPerformed
-        // TODO add your handling code here:
+        if (colunaGlobal > 0) {
+            ml[linhaGlobal][colunaGlobal - 1].setText("");
+            colunaGlobal--;
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton26ActionPerformed
 
     /**
@@ -723,16 +938,11 @@ public class Termo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
     private javax.swing.JButton jButton26;
-    private javax.swing.JButton jButton27;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JButton jba;
+    private javax.swing.JButton jbb;
+    private javax.swing.JButton jbc;
     private javax.swing.JButton jbd;
     private javax.swing.JButton jbe;
     private javax.swing.JButton jbf;
@@ -742,6 +952,8 @@ public class Termo extends javax.swing.JFrame {
     private javax.swing.JButton jbj;
     private javax.swing.JButton jbk;
     private javax.swing.JButton jbl;
+    private javax.swing.JButton jbm;
+    private javax.swing.JButton jbn;
     private javax.swing.JButton jbo;
     private javax.swing.JButton jbp;
     private javax.swing.JButton jbq;
@@ -750,7 +962,10 @@ public class Termo extends javax.swing.JFrame {
     private javax.swing.JButton jbt;
     private javax.swing.JButton jbtentar;
     private javax.swing.JButton jbu;
+    private javax.swing.JButton jbv;
     private javax.swing.JButton jbw;
+    private javax.swing.JButton jbx;
     private javax.swing.JButton jby;
+    private javax.swing.JButton jbz;
     // End of variables declaration//GEN-END:variables
 }
