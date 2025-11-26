@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 public class Termo extends javax.swing.JFrame {
 
     String[] palavras = {
-        "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "dança", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "famos", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nível", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "furor", "fusão", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "claro"
+        "carta", "mundo", "praia", "monte", "feliz", "sonho", "noite", "claro", "cheio", "vagas", "força", "beijo", "culpa", "tempo", "nobre", "honra", "pagar", "atuar", "fraco", "pacto", "canto", "ritmo", "fatia", "casar", "amigo", "firme", "livro", "fugir", "bravo", "tanto", "terno", "verde", "marca", "justo", "matar", "padel", "hotel", "pleno", "amado", "servo", "letra", "frase", "bebeu", "nuvem", "roupa", "museu", "pobre", "motel", "pular", "nasce", "carne", "vigor", "lento", "custe", "zebra", "bolsa", "couro", "traje", "massa", "vidro", "navio", "motor", "tocar", "andar", "abrir", "limpo", "suave", "rival", "banco", "turma", "grupo", "posto", "certo", "cesta", "coisa", "nivel", "dente", "mesma", "mesmo", "vento", "chuva", "salto", "gosto", "culpa", "festa", "tarde", "antes", "sorte", "sinal", "lugar", "geral", "perto", "longe", "igual", "topar", "tomar", "comer", "beber", "temor", "caber", "falar", "calma", "saiba", "olhar", "dizer", "achar", "viver", "prova", "meter", "ouvir", "puxar", "penis", "razão", "tarde", "criar", "meter", "pesar", "lider", "mando", "legal", "civil", "tribo", "lenda", "folga", "prato", "suado", "fomei", "nobre", "gesto", "carga", "pilha", "cesto", "fardo", "trago", "saldo", "visão", "argua", "clima", "coste", "magia", "morte", "mudar", "fundo", "linha", "faixa", "cesta", "lutar", "lance", "cinto", "focar", "molho", "couro", "vazio", "prado", "poema", "barco", "frota", "mural", "folha", "bicho", "papel", "pente", "serra", "cesto", "vinho", "pista", "torre", "costa", "fenda", "jogar", "lindo", "antes", "sonar", "pouco", "estar", "sabor", "cardo", "jovem", "ricos", "pobre", "covil", "pular", "tocar", "vasto", "reino", "globo", "cerne", "posto", "corpo", "aroma", "rever", "saber", "crise", "norma", "repor", "seara", "couss", "chefe", "agora", "burro", "nossa", "vozão", "mural", "prior", "comum", "preço", "valeu", "trapo", "tutor", "forma", "humor", "falar", "cansa", "listo", "fosse", "haste", "cópia", "claro"
     };
     ImageIcon imagem = new ImageIcon(getClass().getResource("imagens/fundo.png"));
 
@@ -32,6 +32,8 @@ public class Termo extends javax.swing.JFrame {
     JLabel ml[][] = new JLabel[6][5];
     int colunaGlobal = 0;
     int linhaGlobal = 0;
+    String copiaPalavraSorteada = "";
+    String palavra = "";
 
     /**
      * Creates new form Termo
@@ -151,6 +153,7 @@ public class Termo extends javax.swing.JFrame {
     }
 
     private void preencherCampo(String letra) {
+        System.out.println(linhaGlobal + "************");
         if (letra.equals("<")) {
             if (colunaGlobal > 0) {
                 ml[linhaGlobal][colunaGlobal - 1].setText("");
@@ -169,11 +172,15 @@ public class Termo extends javax.swing.JFrame {
     }
 
     private void conferirPalavra() {
-        String copiaPalavraSorteada = palavraSorteada.toUpperCase();
+        copiaPalavraSorteada = palavraSorteada.toUpperCase();
         if (colunaGlobal < 5) {
             return;
         }
-        String palavra = lerPalavra();
+        palavra = lerPalavra();
+        System.out.println(palavra+ "7777777");
+        if (palavra.length() == 0){
+            return;
+        }
         if (palavra.equalsIgnoreCase(copiaPalavraSorteada)) {
             //mensagem fim de jogo
             for (int i = 0; i < 5; i++) {
@@ -189,23 +196,32 @@ public class Termo extends javax.swing.JFrame {
                 return;
             }
         }
+
+        //verificar se a letra está no lugar correto
         for (int i = 0; i < 5; i++) {
-            if (palavra.substring(i, i + 1).equalsIgnoreCase(palavraSorteada.substring(i, i + 1))) {
+            if (palavra.substring(i, i + 1).equalsIgnoreCase(copiaPalavraSorteada.substring(i, i + 1))) {
                 //deixar botão verde
                 ml[linhaGlobal][i].setForeground(Color.GREEN);// cor do texto
                 atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.GREEN);
-                copiaPalavraSorteada = conferirLetra(copiaPalavraSorteada, palavra, i);
+                String letra = palavra.substring(i, i + 1);
+                copiaPalavraSorteada = copiaPalavraSorteada.replaceFirst(letra, "*");
 
             }
         }
+        //verificar se a letra está na palavra mas no lugar errado
         for (int i = 0; i < 5; i++) {
             if (copiaPalavraSorteada.toUpperCase().contains(palavra.substring(i, i + 1))) {
                 ml[linhaGlobal][i].setForeground(Color.YELLOW);
                 atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.YELLOW);
-                copiaPalavraSorteada = conferirLetra(copiaPalavraSorteada, palavra, i);
-            } else {
+                String letra = palavra.substring(i, i + 1);
+                copiaPalavraSorteada = copiaPalavraSorteada.replaceFirst(letra, "*");
+            }
+        }
+        for (int i = 0; i < 5; i++) {
+            if ((!palavraSorteada.toUpperCase().contains(palavra.substring(i, i + 1)))) {
                 atribuirCorBotaoLetra(palavra.substring(i, i + 1), Color.RED);
             }
+
         }
 
         if (linhaGlobal < 5) {
@@ -226,21 +242,8 @@ public class Termo extends javax.swing.JFrame {
         }
     }
 
-    private String conferirLetra(String copiaPalavraSorteada, String palavra, int i) {
-        int indice = copiaPalavraSorteada.indexOf(palavra.substring(i, i + 1));
-        System.out.println(palavraSorteada);
-        System.out.println(indice);
-        if (indice == - 1) {
-            return copiaPalavraSorteada;
-        }
-
-        copiaPalavraSorteada.replace(palavra.substring(i, i + 1), "*");
-
-        return copiaPalavraSorteada;
-    }
-
     private String lerPalavra() {
-        String palavra = "";
+        palavra = "";
         for (int i = 0; i < 5; i++) {
             palavra += ml[linhaGlobal][i].getText();
 
@@ -284,6 +287,10 @@ public class Termo extends javax.swing.JFrame {
         linhaGlobal = 0;
         colunaGlobal = 0;
         sortearPalavra();
+        palavra = "";
+        System.out.println(linhaGlobal);
+        System.out.println(colunaGlobal);
+        System.out.println(palavraSorteada);
         String alfabeto = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         for (int i = 0; i < alfabeto.length(); i++) {
             atribuirCorBotaoLetra(alfabeto.substring(i, i + 1), Color.LIGHT_GRAY);
@@ -305,7 +312,7 @@ public class Termo extends javax.swing.JFrame {
     }
 
     private void atribuirCorBotaoLetra(String L, Color color) {
-        switch (L) {
+        switch (L.toUpperCase()) {
             case "A":
                 jba.setBackground(color);
                 break;
